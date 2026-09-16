@@ -1,16 +1,22 @@
-# React + Vite
+# Text-to-SQL UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimal React interface for testing a fine-tuned GPT-2 Text-to-SQL pipeline. Users can input custom relational schemas, define primary/foreign keys, and generate SQLite queries with automated query-plan validation.
 
-Currently, two official plugins are available:
+🔗 **Live Demo:** [https://text-to-sql-web-chi.vercel.app](https://text-to-sql-web-chi.vercel.app)  
+🤗 **Model Backend:** [https://huggingface.co/spaces/mazoner11/text-to-sql-backend](https://huggingface.co/spaces/mazoner11/text-to-sql-backend)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## How It Works
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. **Schema Input:** Users define tables, columns, and foreign keys (or load pre-evaluated Spider benchmark templates).
+2. **Inference:** Submits the prompt to a Hugging Face Space running custom GPT-2 weights on ZeroGPU via Gradio SSE queues.
+3. **Execution Check:** Displays the predicted SQL alongside an in-memory SQLite compilation status (`✓ Compiles` vs `x Failed`).
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Local Development
+
+```bash
+npm install
+npm run dev
